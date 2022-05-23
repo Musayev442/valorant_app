@@ -9,13 +9,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<List<Agent>> agent;
+  var agent;
   Services services = Services();
 
   @override
   void initState() {
     super.initState();
-    agent = services.getAgent();
+    agent = Services().getAgent() as Future<List<Agent>>;
   }
 
   @override
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(snapshot.data![index].id.toString()),
+                  title: Text(snapshot.data![index].data[index].uuid),
                 );
               },
             );
@@ -38,24 +38,6 @@ class _HomePageState extends State<HomePage> {
           return const Center(child: CircularProgressIndicator());
         },
       ),
-    );
-  }
-}
-
-class AgentList extends StatelessWidget {
-  const AgentList({Key? key, required this.agents}) : super(key: key);
-  final agents;
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-      ),
-      itemCount: agents.length,
-      itemBuilder: (context, index) {
-        return Image.network(agents[index].id);
-      },
     );
   }
 }
