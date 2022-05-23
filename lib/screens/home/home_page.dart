@@ -15,22 +15,47 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    print("hhh------hereer");
     agent = services.getAgent();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Center(
       child: FutureBuilder(
         future: agent,
         builder: (BuildContext context, AsyncSnapshot<List<Agent>> snapshot) {
           if (snapshot.hasData) {
-            return const Text(" is here");
+            var count = snapshot.data!.length;
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(snapshot.data![index].id.toString()),
+                );
+              },
+            );
           }
           return const Center(child: CircularProgressIndicator());
         },
       ),
+    );
+  }
+}
+
+class AgentList extends StatelessWidget {
+  const AgentList({Key? key, required this.agents}) : super(key: key);
+  final agents;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      itemCount: agents.length,
+      itemBuilder: (context, index) {
+        return Image.network(agents[index].id);
+      },
     );
   }
 }

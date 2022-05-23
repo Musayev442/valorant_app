@@ -1,4 +1,7 @@
 //https://valorant-api.com/v1/agents
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:valorant_app/models/agent.dart';
 import 'dart:convert' as convert;
 
@@ -7,16 +10,18 @@ import 'dart:async';
 
 class Services {
   Future<List<Agent>> getAgent() async {
-    var url = Uri.parse('https://valorant-api.com/v1/agents');
-    var response = await http.get(url);
-    print(response.body);
+    http.Client client = http.Client();
+    final response = await client
+        .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
 
-    if (response.statusCode == 200) {
-      var data = (convert.jsonDecode(response.body) as List);
-      var dataObj = data.map((json) => Agent.fromJson(json)).toList();
-      return dataObj;
-    } else {
-      throw Exception('Failed to load data');
-    }
+    // Use the compute function to run parsePhotos in a separate isolate.
+
+    return compute(parseAgents, response.body);
+  }
+
+  List<Agent> parseAgents(String responseBody) {
+    final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
+
+    return parsed.map<Agent>((json) => Agent.fromJson(json)).toList();
   }
 }

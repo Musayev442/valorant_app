@@ -7,7 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final String _title = "ValoWorld";
+  final String _title = "ValoFan";
 
   const MyApp({Key? key}) : super(key: key);
   @override
