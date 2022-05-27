@@ -31,7 +31,8 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     child: Text(
-                        snapshot.data?.data[index].abilities[0].displayName),
+                        (snapshot.data?.data[index].voiceLine.minDuration)
+                            .toString()),
                   );
                 });
           }
