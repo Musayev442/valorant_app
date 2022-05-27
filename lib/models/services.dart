@@ -17,6 +17,8 @@ class Services {
         await http.get(Uri.parse('https://valorant-api.com/v1/agents/'));
 
     if (response.statusCode == 200) {
+      var d = Agent.fromJson(jsonDecode(response.body));
+      //print(d.data[0].id);
       return Agent.fromJson(jsonDecode(response.body));
     } else {
       print('Request failed with status: ${response.statusCode}.');

@@ -30,7 +30,8 @@ class _HomePageState extends State<HomePage> {
                 itemCount: snapshot.data?.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    child: Text(snapshot.data?.data[index].id),
+                    child: Text(
+                        snapshot.data?.data[index].abilities[0].displayName),
                   );
                 });
           }
