@@ -9,31 +9,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var agent;
+  late Future<Agent> futureAgent;
   Services services = Services();
 
   @override
   void initState() {
     super.initState();
-    agent = Services().getAgent() as Future<List<Agent>>;
+    futureAgent = services.getAgent();
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: FutureBuilder(
-        future: agent,
-        builder: (BuildContext context, AsyncSnapshot<List<Agent>> snapshot) {
+        future: futureAgent,
+        builder: (BuildContext context, AsyncSnapshot<Agent> snapshot) {
           if (snapshot.hasData) {
-            var count = snapshot.data!.length;
             return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(snapshot.data![index].data[index].uuid),
-                );
-              },
-            );
+                padding: const EdgeInsets.all(8),
+                itemCount: snapshot.data?.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    child: Text(snapshot.data?.data[index].id),
+                  );
+                });
           }
           return const Center(child: CircularProgressIndicator());
         },

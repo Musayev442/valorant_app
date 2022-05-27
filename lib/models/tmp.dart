@@ -11,7 +11,6 @@ void main(List<String> arguments) async {
   // https://developers.google.com/books/docs/overview
   final response =
       await http.get(Uri.parse('https://valorant-api.com/v1/agents/'));
-//print(convert.jsonDecode(response.body));
 
   if (response.statusCode == 200) {
     final jsonResponse = convert.jsonDecode(response.body);
