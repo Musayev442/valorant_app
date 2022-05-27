@@ -22,30 +22,29 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        HomeVideo(),
-        Center(
-          child: FutureBuilder(
-            future: futureAgent,
-            builder: (BuildContext context, AsyncSnapshot<Agent> snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: snapshot.data?.data.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        child: Text(
-                            (snapshot.data?.data[index].voiceLine.minDuration)
-                                .toString()),
-                      );
-                    });
-              }
-              return const Center(child: CircularProgressIndicator());
-            },
-          ),
-        ),
-      ],
+    return VideoPlayerApp();
+  }
+
+  Center AgentData() {
+    return Center(
+      child: FutureBuilder(
+        future: futureAgent,
+        builder: (BuildContext context, AsyncSnapshot<Agent> snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: snapshot.data?.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    child: Text(
+                        (snapshot.data?.data[index].voiceLine.minDuration)
+                            .toString()),
+                  );
+                });
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }
