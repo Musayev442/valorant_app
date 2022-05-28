@@ -48,27 +48,67 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: FutureBuilder(
-        future: _initializeVideoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // If the VideoPlayerController has finished initialization, use
-            // the data it provides to limit the aspect ratio of the video.
-            return AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              // Use the VideoPlayer widget to display the video.
-              child: VideoPlayer(_controller),
-            );
-          } else {
-            // If the VideoPlayerController is still initializing, show a
-            // loading spinner.
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity,
+        child: Stack(alignment: Alignment.center, children: [
+          Container(
+            color: Colors.black,
+            child: Opacity(
+              opacity: 0.7,
+              child: DisplayVideo(),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.white)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).primaryColor,
+                  onPrimary: Colors.white,
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  minimumSize: const Size(150, 45), //////// HERE
+                ),
+                onPressed: () {},
+                child: const Text(
+                  "Play Free",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
+                ),
+              ),
+            ),
+          ),
+        ]),
       ),
+    );
+  }
+
+  FutureBuilder<void> DisplayVideo() {
+    return FutureBuilder(
+      future: _initializeVideoPlayerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          // If the VideoPlayerController has finished initialization, use
+          // the data it provides to limit the aspect ratio of the video.
+          return AspectRatio(
+            aspectRatio: _controller.value.aspectRatio,
+            // Use the VideoPlayer widget to display the video.
+            child: VideoPlayer(_controller),
+          );
+        } else {
+          // If the VideoPlayerController is still initializing, show a
+          // loading spinner.
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
