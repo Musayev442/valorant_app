@@ -36,8 +36,8 @@ class _HomePageState extends State<HomePage> {
 
   Container HomeDivider() {
     return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
         child: Divider(
           thickness: 1,
           color: Color(0xff0F1923),

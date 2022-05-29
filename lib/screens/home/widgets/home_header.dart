@@ -12,14 +12,19 @@ class HomeHeader extends StatelessWidget {
       width: double.infinity,
       child: Stack(alignment: Alignment.center, children: [
         VideoPlayerApp(),
-        Container(
+        SizedBox(
           height: 150,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               HomeTextDescription(),
               HomeTitle(),
-              HomeButton(Colors.white, "Play Free"),
+              HomeButton(
+                Theme.of(context).primaryColor,
+                Colors.white,
+                Colors.white,
+                "Play Free",
+              ),
             ],
           ),
         ),

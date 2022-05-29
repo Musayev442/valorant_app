@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 
 class HomeButton extends StatelessWidget {
-  HomeButton(this.buttonColor, this.buttonText);
+  const HomeButton(
+    this.buttonBgColor,
+    this.buttonTextColor,
+    this.buttonBorderColor,
+    this.buttonText,
+  );
 
-  final buttonColor;
+  final buttonBgColor;
+  final buttonTextColor;
+  final buttonBorderColor;
   final buttonText;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border: Border.all(color: buttonColor)),
+      decoration: BoxDecoration(
+        border: Border.all(color: buttonBorderColor),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Theme.of(context).primaryColor,
+            primary: buttonBgColor,
             onPrimary: Colors.white,
             elevation: 3,
             shape: RoundedRectangleBorder(
@@ -25,7 +35,9 @@ class HomeButton extends StatelessWidget {
           child: Text(
             buttonText,
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                color: buttonTextColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 16),
           ),
         ),
       ),

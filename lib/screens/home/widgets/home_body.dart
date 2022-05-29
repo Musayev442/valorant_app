@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_app/screens/home/widgets/body_section_agents.dart';
+import 'package:valorant_app/screens/home/widgets/body_section_agent.dart';
+import 'package:valorant_app/screens/home/widgets/body_section_map.dart';
 import 'body_section_valorant.dart';
 
 class HomeBody extends StatefulWidget {
@@ -14,6 +15,7 @@ class _HomeBodyState extends State<HomeBody> {
       children: [
         SectionValorant(),
         SectionAgent(),
+        SectionMap(),
       ],
     );
   }

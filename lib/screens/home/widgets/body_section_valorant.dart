@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'home_button.dart';
 
 class SectionValorant extends StatelessWidget {
-  const SectionValorant({
-    Key? key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,8 +49,14 @@ class SectionValorant extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 50.0),
                 child: Container(
-                    alignment: Alignment.center,
-                    child: HomeButton(Color(0xffece8e1), "LEARN THE GAME")),
+                  alignment: Alignment.center,
+                  child: HomeButton(
+                    Theme.of(context).primaryColor,
+                    Colors.white,
+                    const Color(0xffece8e1),
+                    "LEARN THE GAME",
+                  ),
+                ),
               )
             ],
           )),
