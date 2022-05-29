@@ -48,43 +48,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SizedBox(
-        width: double.infinity,
-        child: Stack(alignment: Alignment.center, children: [
-          Container(
-            color: Colors.black,
-            child: Opacity(
-              opacity: 0.7,
-              child: DisplayVideo(),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.white)),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
-                  onPrimary: Colors.white,
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  minimumSize: const Size(150, 45), //////// HERE
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "Play Free",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                ),
-              ),
-            ),
-          ),
-        ]),
+    return Container(
+      color: Colors.black,
+      child: Opacity(
+        opacity: 0.7,
+        child: DisplayVideo(),
       ),
     );
   }

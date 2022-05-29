@@ -26,7 +26,15 @@ class _HomeState extends State<Home> {
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
           backgroundColor: Theme.of(context).primaryColor,
-          title: const Text("ValoFan")),
+          title: Row(
+            children: [
+              Image(
+                image: AssetImage('assets/images/logo2.png'),
+                width: 70,
+              ),
+              Text("ValorantFan"),
+            ],
+          )),
       body: IndexedStack(
         index: _selectedIndex,
         children: menu,
