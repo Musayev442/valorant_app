@@ -61,34 +61,38 @@ class SectionAgent extends StatelessWidget {
 class AgentImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: const [
-        Positioned(
-          child: Image(
-            image: AssetImage("assets/images/rena.png"),
-            width: 250,
-          ),
-        ),
-        Positioned(
-          top: 50,
-          right: 0,
-          child: Image(
-            image: AssetImage("assets/images/jet.png"),
-            width: 180,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 250),
-          child: Center(
-            child: HomeButton(
-              Color(0xFFECE8E1),
-              Color(0xFF0f1923),
-              Color(0xFFECE8E1),
-              "VIEW ALL AGENTS",
+    return SizedBox(
+      height: 400,
+      child: Stack(
+        children: const [
+          Positioned(
+            bottom: 0,
+            child: Image(
+              image: AssetImage("assets/images/rena.png"),
+              width: 250,
             ),
           ),
-        )
-      ],
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Image(
+              image: AssetImage("assets/images/jet.png"),
+              width: 180,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 150),
+            child: Center(
+              child: HomeButton(
+                Color(0xFFECE8E1),
+                Color(0xFF0f1923),
+                Color(0xFFECE8E1),
+                "VIEW ALL AGENTS",
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

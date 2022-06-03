@@ -26,10 +26,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     // Create and store the VideoPlayerController. The VideoPlayerController
     // offers several different constructors to play videos from assets, files,
     // or the internet.
-    _controller = VideoPlayerController.network(
-      'https://assets.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt9037484fa766c7b8/61d90887dea73a236fc56d82/Disruption_VAL_MOBILE_768x490.mp4',
-    );
-
+    _controller = VideoPlayerController.asset("assets/videos/header.mp4");
     // Initialize the controller and store the Future for later use.
     _initializeVideoPlayerFuture = _controller.initialize();
 
@@ -72,8 +69,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         } else {
           // If the VideoPlayerController is still initializing, show a
           // loading spinner.
-          return const Center(
-            child: CircularProgressIndicator(),
+          return const SizedBox(
+            height: 400,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         }
       },
