@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-final Uri _url = Uri.parse('https://flutter.dev');
 
 class HomeButton extends StatelessWidget {
   const HomeButton(
@@ -34,7 +31,7 @@ class HomeButton extends StatelessWidget {
             ),
             minimumSize: const Size(150, 45), //////// HERE
           ),
-          onPressed: _launchUrl,
+          onPressed: () {},
           child: Text(
             buttonText,
             style: TextStyle(
@@ -46,8 +43,4 @@ class HomeButton extends StatelessWidget {
       ),
     );
   }
-}
-
-void _launchUrl() async {
-  if (!await launchUrl(_url)) throw 'Could not launch $_url';
 }

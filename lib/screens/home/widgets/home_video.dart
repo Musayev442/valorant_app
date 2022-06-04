@@ -70,7 +70,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           // If the VideoPlayerController is still initializing, show a
           // loading spinner.
           return const SizedBox(
-            height: 390,
+            height: 400,
             child: Center(
               child: CircularProgressIndicator(),
             ),
