@@ -49,7 +49,20 @@ class SectionMap extends StatelessWidget {
             ),
           ),
         ),
-        Map()
+        Stack(children: [
+          Image.asset("assets/images/map.png"),
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Container(
+              height: 200,
+              decoration: const BoxDecoration(
+                border: Border(
+                  left: BorderSide(color: Colors.black),
+                ),
+              ),
+            ),
+          ),
+        ])
       ],
     );
   }
